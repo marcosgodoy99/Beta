@@ -50,8 +50,15 @@
                     </div>
                     @endif
                     
-
+                    <form action="">
                     <a href="{{ route('students.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Agregar un nuevo estudiante</a>
+                    <select style="border 5px"  name="idCategoria" required>
+                            <option value="1">Curso 1</option>
+                            <option value="2">Curso 2</option>
+                            <option value="3">Curso 3</option>
+                        </select>
+                    </form>
+
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>

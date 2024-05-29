@@ -170,16 +170,19 @@ class StudentController extends Controller
 
     public function generatePDF()
     {
-        $students = DB::table('students')->get();
-        foreach ($students as $student)
-            { 
-            $html = '<h1>Información del estudiante</h1>';
+        $students = Student::all();
+        $html = '<h1>Información de los estudiantes</h1>'; 
+        foreach ($students as $student) 
+        { 
             $html .= '<p>Nombre: ' . $student->name .'</p>';
             $html .= '<p>Apellido: ' . $student->lastname .'</p>';
             $html .= '<p>DNI: ' . $student->dni .'</p>';
             $html .= '<p>Curso: ' . $student->curso .'</p>';
             $html .= '<p>Grupo: ' . $student->group .'</p>';
-            }
+            $html .= '<p>Fecha de nacimiento: ' . $student->birthdate .'</p>'; 
+            $html .= '<hr>';
+        }
+
         $dompdf = new Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->render();
