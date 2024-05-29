@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="http://www.sedesonline.edu.ar/pluginfile.php/1/core_admin/logo/0x200/1710279269/logo-sedes-hd.png" class="block h-10" />
                 </a>
             </div>
 
