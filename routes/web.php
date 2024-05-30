@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ParameterController;
+use App\Http\Controllers\LogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('students', StudentController::class)->middleware(['auth', 'verified']);
 Route::resource('parameters', ParameterController::class)->middleware(['auth', 'verified']);
+Route::resource('/logs', LogController::class);
+Route::get('/log',[LogController::class,'index'])->name('log');
 
 Route::get('/students/{student}/assist', [StudentController::class, 'assist'])->name('students.assist');
 Route::get('/students/{student}/deleteAssist', [StudentController::class, 'deleteAssist'])->name('students.deleteAssist');

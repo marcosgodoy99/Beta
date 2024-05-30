@@ -15,6 +15,10 @@ use Carbon\Carbon;
 use Dompdf\Dompdf;
 use App\Models\parameter;
 use App\Models\Attendance;
+use App\Http\Controllers\LogController;
+use App\Models\log;
+use App\Http\Controllers\Auth;
+use Jenssegers\Agent\Agent;
 
 class StudentController extends Controller
 {
@@ -46,7 +50,9 @@ class StudentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreStudentRequest $request) : RedirectResponse
-    {
+    {   
+        $accion = 'Crear alumno';
+        $this->Log($accion);
         Student::create($request->all());
         return redirect()->route('students.index')
                 ->withSuccess('New Student is added successfully.');
@@ -124,6 +130,8 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student) : RedirectResponse
     {
+        $accion = 'Editar alumno';
+        $this->Log($accion);
         $student->update($request->all());
         return redirect()->back()
                 ->withSuccess('Student is updated successfully.');
@@ -134,6 +142,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student) : RedirectResponse
     {
+        $accion = 'Eliminar alumno';
+        $this->Log($accion);
         $student->delete();
         return redirect()->route('students.index')
                 ->withSuccess('Student is deleted successfully.');
@@ -222,6 +232,22 @@ class StudentController extends Controller
             return 'PROMOCION';
         }
         return 'LIBRE';
+    }
+
+     public function Log($accion){
+   
+        $user = auth()->user()->email;
+        $browser = request()->userAgent();
+        $browser = explode(" ", "$browser")[0];
+        $ip = request()->ip();
+        $request = new Log(); 
+        $request->user = $user;
+        $request->accion = $accion;
+        $request->ip = $ip;
+        $request->navegador = $browser;
+        $request->save();
+        
+
     }
     
 }
