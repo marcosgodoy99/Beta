@@ -17,5 +17,6 @@ sistema de gestion de alumnos y asistencias
 5. Configura la base de datos en el archivo: **.env**
 6. Ejecuta las migraciones: **php artisan migrate**
 7. instalar dependencias: npm install
+8. comando npm run build.
 Para ejecutar el servidor de desarrollo:
 **php artisan serve**
