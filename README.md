@@ -16,6 +16,6 @@ sistema de gestion de alumnos y asistencias
 4. Genera la clave de la aplicación: **php artisan key:generate**
 5. Configura la base de datos en el archivo: **.env**
 6. Ejecuta las migraciones: **php artisan migrate**
-
+7. instalar dependencias: npm install
 Para ejecutar el servidor de desarrollo:
 **php artisan serve**
